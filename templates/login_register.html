@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  {% include 'nav.html' %}
+
+  {% if page == 'login' %}
+    <div class="container mt-5 pt-5">
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+          <div class="card text-bg-dark shad">
+            <div class="card-body">
+              <h1 class="text-center card-header">Login</h1>
+              <form action="" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input type="email" name="email" placeholder="Enter username" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" name="password" placeholder="Enter password" class="form-control" />
+                </div>
+
+                <input type="submit" value="login" class="btn btn-warning mb-3" />
+                <h6>Not yet registered? <a href={% url 'register' %}>sign up</a></h6>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3"></div>
+      </div>
+    </div>
+  {% else %}
+    <div class="container mt-5 pt-5">
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+          <div class="card text-bg-dark border-warning">
+          <div class="card-body py-4">
+            <div class="d-flex row justify-content-center align-items-center">
+              <h1 class="text-center card-title">Sign-up</h1>
+              <hr />
+              <form action="" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+
+                <input type="submit" value="Register" class="btn btn-warning" />
+              </form>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="col-lg-3"></div>
+        
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
