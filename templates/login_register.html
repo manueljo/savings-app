@@ -16,7 +16,7 @@
                 {% csrf_token %}
                 <div class="mb-3">
                   <label class="form-label">Email</label>
-                  <input type="email" name="email" placeholder="Enter username" class="form-control" />
+                  <input type="email" name="email" placeholder="Enter email" class="form-control" />
                 </div>
 
                 <div class="mb-3">
@@ -43,7 +43,8 @@
             <div class="d-flex row justify-content-center align-items-center">
               <h1 class="text-center card-title">Sign-up</h1>
               <hr />
-              <form action="" method="POST">
+              
+              <form enctype="multipart/form-data" action="" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
 
@@ -58,4 +59,6 @@
       </div>
     </div>
   {% endif %}
+
+  {% include 'footer.html' %}
 {% endblock %}

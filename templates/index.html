@@ -3,6 +3,7 @@
 {% block content %}
   {% include 'nav.html' %}
 
+{% comment %} <div class="spinner"></div> {% endcomment %}
   {% comment %}hero section{% endcomment %}
   <div class="container-fluid text-white col-xxl-8 px-4 py-5 all">
     <div class="hero-img"></div>
@@ -10,9 +11,9 @@
         <div>
           <div class="col-lg-6 mt-15">
             <h1 class="display-5 fw-bold lh-1 mb-3 mt-5">Save well to end well</h1>
-            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ea totam vel a quasi eos ullam fugit cum error nihil?</p>
+            <p class="lead">Let's help you plan your finance for the future, make savings for a good ending!!</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-              <button type="button" class="btn na btn-warning btn-lg px-4 me-md-2">Get Started</button>
+              <a href="{% url 'login' %}"><button type="button" class="btn na btn-warning btn-lg px-4 me-md-2">Get Started</button></a>
             </div>
           </div>
         </div>
@@ -27,7 +28,7 @@
     <section>
       <div class="container g-5">
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col">
+          <div class="col ">
             <div class="card text-center bg-dark">
             {% comment %} <img src="..." class="card-img-top" alt="..." /> {% endcomment %}
               <div class="h1 mt-3">

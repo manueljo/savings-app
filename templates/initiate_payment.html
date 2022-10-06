@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  {% include 'dash.html' %}
+  
+  <div class="container">
+    <form action="" method='Post'>
+        <h4>Enter amount:</h4>
+        <hr>
+        {% csrf_token %}
+        {{payment_form | crispy}}
+        <p>
+            <input type="submit" value="submit">
+        </p>
+    </form>
+  </div>
+  {% include 'footer.html' %}
+{% endblock %}

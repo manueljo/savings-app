@@ -1,3 +1,4 @@
+{% load static %}
 <header class="p-3 mb-3 border-bottom text-bg-dark">
   <div class="container ">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -9,18 +10,23 @@
 
       <ul class="nav col-12 col-lg-auto ms-lg-auto mb-2 justify-content-center mb-md-0">
         <li>
-          <a href="#" class="nav-link px-2 link-warning">Home</a>
+          <a href={% url 'index' %} class="nav-link px-2 link-warning">Home</a>
         </li>
         <li>
-          <a href="#" class="nav-link px-2 link-warning">About</a>
+          <a href={% url 'about' %} class="nav-link px-2 link-warning">About</a>
         </li>
         <li>
-          <a href="#" class="nav-link px-2 link-warning">Contact</a>
+          <a href={% url 'contact' %} class="nav-link px-2 link-warning">Contact</a>
         </li>
+        {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link text-warning" href={% url 'dashboard' %}>dashboard</a>
+            </li>
+          {% endif %}
       </ul>
 
       <div class="dropdown text-end">
-        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle" /></a>
+        <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><img src="{{request.user.passport.url}}" alt="mdo" width="32" height="32" class="rounded-circle" /></a>
         <ul class="dropdown-menu text-small">
           <li>
             <a class="dropdown-item text-warning" href="#">New project...</a>
@@ -29,13 +35,13 @@
             <a class="dropdown-item text-warning" href="#">Settings</a>
           </li>
           <li>
-            <a class="dropdown-item text-warning" href="#">Profile</a>
+            <a class="dropdown-item text-warning" href="{% url 'profile' request.user.id %}">Profile</a>
           </li>
           <li>
             <hr class="dropdown-divider" />
           </li>
           <li>
-            <a class="dropdown-item text-warning" href="#">Sign out</a>
+            <a class="dropdown-item text-warning" href="{% url 'logout' %}">Sign out</a>
           </li>
         </ul>
       </div>

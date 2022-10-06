@@ -1,12 +1,67 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
+  {% include 'dash.html' %}
+<section>
+  <div class="container">
+    <div class="total--display--container">
+      <div class="total--display">
+        <span>Total Amount</span>
+      <h1>&#8358;{{total}}</h1>
+      </div>
+      <div class="total--display">
+        <span>Successful</span>
+        <span>Transactions</span>
+      <h1>{{number}}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+  <div class="container">
+    <h3>Transaction record</h3>
+    <div class="bd-example-snippet bd-code-snippet" >
+      <div class="table-responsive" >
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Reference</th>
+              <th scope="col">Verified</th>
+            </tr>
+          </thead>
+          
+          <tbody>
 
-{% include 'dash.html' %}
+          {% for record in records %}
+            <tr>
+              <th scope="row">{{record.date_created|date:'d M Y'}}</th>
+              <td>{{record.amount}}</td>
+              <td>{{record.ref}}</td>
+              <td>
+                
+                {% if record.verified %}
+                  &#9989;
+              {% else %}
+               &#10060;
+                {% endif %}
+                  
+                </td>
+            </tr>
+          {% endfor %}
 
+            <tr>
+              <th scope="row">Total</th>
+              <td>{{toal}}</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+          <a href="{% url 'initiate-payment' %}"><button class="btn btn-warning">Deposit</button></a>
+      </div>
+    </div>
+  </div>
 
-{% include 'footer.html' %}
-
-{% endblock content %}
-    
+  {% include 'footer.html' %}
+{% endblock %}

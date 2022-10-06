@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  {% include 'dash.html' %}
+
+  <div class="container-fluid">
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form | crispy }}
+
+      <input type="submit" value="save" class="btn btn-warning" />
+    </form>
+  </div>
+
+  {% include 'footer.html' %}
+{% endblock %}
