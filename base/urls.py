@@ -9,4 +9,7 @@ urlpatterns = [
     path('login/', views.loginpage, name='login'),
     path('logout/', views.logoutuser, name='logout'),
     path('register/', views.registerpage, name='register'),
+    path('profile/<int:pk>/', views.profiles, name='profile'),
+    path('initiate_pay/', views.initiate_payment, name='initiate-payment'),
+    path('<str:ref>/', views.verify_payment, name='verify-payment'),
 ]
